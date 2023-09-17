@@ -37,8 +37,8 @@ int main() {
 	setlocale(LC_ALL,"");
 	
     char *arr[20] = {
-        "maca", "banana", "pera", "uva", "laranja", "abacaxi", "limão", "manga", "abacate", "kiwi",
-        "cereja", "morango", "pêssego", "goiaba", "melancia", "framboesa", "amora", "caqui", "figo", "papaya"
+        "maca", "banana", "pera", "uva", "laranja", "abacaxi", "limÃ£o", "manga", "abacate", "kiwi",
+        "cereja", "morango", "pÃªssego", "goiaba", "melancia", "framboesa", "amora", "caqui", "figo", "papaya"
     };
 
     int trocas = 0, comparacoes = 0;
@@ -50,6 +50,19 @@ int main() {
     for (int i = 0; i < tamanho; i++) {
         printf("%s\n", arr[i]);
     }
+    
+    FILE *arquivo = fopen("saida.txt", "w");
+	if (arquivo == NULL) {
+    printf("Erro ao criar o arquivo de saÃ­da.\n");
+    return 1;
+}
+
+	fprintf(arquivo, "Vetor ordenado:\n");
+	for (int i = 0; i < tamanho; i++) {
+    fprintf(arquivo, "%s\n", arr[i]);
+}
+
+	fclose(arquivo);
 
     char *mediana;
     if (tamanho % 2 == 0) {
@@ -64,9 +77,8 @@ int main() {
     }
     printf("\nMediana: %s\n", mediana);
 
-    printf("Número de trocas: %d\n", trocas);
-    printf("Número de comparações: %d\n", comparacoes);
+    printf("NÃºmero de trocas: %d\n", trocas);
+    printf("NÃºmero de comparaÃ§Ãµes: %d\n", comparacoes);
 
     return 0;
 }
-
